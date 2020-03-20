@@ -17,5 +17,4 @@ function newTodo() {
 
   list.appendChild(li)
   console.log('count is ' + list.childElementCount)
-
 }
