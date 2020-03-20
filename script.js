@@ -10,9 +10,13 @@ const itemCountSpan = document.getElementById('item-count')
 const uncheckedCountSpan = document.getElementById('unchecked-count')
 
 function newTodo() {
-  let list = []
+  
+  var li = document.createElement('li');
   let todoItem = prompt("Enter your todo item")
-  list.push(todoItem)
-  console.log(list)
+  console.log('todoitem is: ' + todoItem)
+  li.textContent = todoItem
+  // list.innerHTML = todoItem.value
+  // todoItem.value =''
+  list.appendChild(li)
 
 }
