@@ -16,5 +16,5 @@ function newTodo() {
   li.textContent = todoItem
 
   list.appendChild(li)
-  console.log('count is ' + list.childElementCount)
+  itemCountSpan.textContent = list.childElementCount
 }
