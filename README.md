@@ -24,7 +24,7 @@ TODOs. Lastly, you'll see the `addTodo()` function. This gets executed when
 creating a new TODO. You should replace the `alert()` call with logic to create
 new TODOs.
 
-Good luck!
+Good luck!1
 
 ## Challenge! (Not Required)
 If you finish early and are up for a challenge, try adding delete functionality.
