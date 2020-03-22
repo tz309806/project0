@@ -15,17 +15,19 @@ function newTodo() {
   console.log("when clicked counter is: " + itemCountSpan.innerHTML)
   uncheckedCountSpan.innerHTML++;
   let listItem = document.createElement("li");
-
   let checkbox = document.createElement("input");
+  let todoTextInput = document.createElement("input");
+  let deleteBtn = document.createElement("button");
+
+
   checkbox.setAttribute("type", "checkbox");
   checkbox.setAttribute("onchange", "checkTodo(this)");
   checkbox.setAttribute("class", classNames.TODO_CHECKBOX);
-
-  let todoTextInput = document.createElement("input");
+  
   todoTextInput.setAttribute("class", classNames.TODO_TEXT);
-
-  let deleteBtn = document.createElement("button");
+  
   deleteBtn.setAttribute("class", classNames.TODO_DELETE);
+  deleteBtn.setAttribute("onclick", "deleBtnCounter()")
   deleteBtn.appendChild(document.createTextNode("Delete"))
   var todoListener = document.querySelector('ul.todo-list')
 
@@ -40,13 +42,8 @@ function newTodo() {
 
   //   });
 
-  var deleteBtns = document.getElementsByClassName("todo-delete")
-  console.log("delete btn count is: " + deleteBtns.length)
-  for(var i = 0; i<deleteBtns.length; i++){
-    console.log("in loop")
-    deleteBtns[i].addEventListener('click', deleteTodo, false);
-  }
-  
+
+
     // listItem.setAttribute("id", i)
   
   
@@ -56,8 +53,13 @@ function newTodo() {
   listItem.setAttribute("class", classNames.TODO_ITEM);
   // deleteBtn.addEventListener("click", deleteTodo());
   list.appendChild(listItem);
+}
 
-
+function deleBtnCounter(){
+  var deleteBtns = document.getElementsByClassName("todo-delete")
+  for(var i = 0; i<deleteBtns.length; i++){
+    deleteBtns[i].addEventListener('click', deleteTodo);
+  }
 }
 
 function checkTodo(checkbox) {
