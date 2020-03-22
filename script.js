@@ -11,6 +11,8 @@ const uncheckedCountSpan = document.getElementById('unchecked-count')
 
 function newTodo() {
   itemCountSpan.innerHTML++;
+
+  console.log("when clicked counter is: " + itemCountSpan.innerHTML)
   uncheckedCountSpan.innerHTML++;
   let listItem = document.createElement("li");
 
@@ -22,48 +24,50 @@ function newTodo() {
   let todoTextInput = document.createElement("input");
   todoTextInput.setAttribute("class", classNames.TODO_TEXT);
 
-  let deleteBtn = document.createElement("BUTTON");
+  let deleteBtn = document.createElement("button");
   deleteBtn.setAttribute("class", classNames.TODO_DELETE);
-  
-  var todoListener = document.querySelector('ul')
+  deleteBtn.appendChild(document.createTextNode("Delete"))
+  var todoListener = document.querySelector('ul.todo-list')
 
-  todoListener.addEventListener('click', function (event) {
-    var deleteBtnClickedOn = event.target
-    if (deleteBtnClickedOn.className === 'todo-delete') {
-      deleteTodo(parseInt(deleteBtnClickedOn.parentNode.id))
-    }
 
-  });
+  //   todoListener.addEventListener('click', function (event) {
 
-  for (i = 0; i < itemCountSpan.innerHTML; i++) {
-    listItem.id = i
+  //     console.log(event)
+  //     var deleteBtnClickedOn = event.target.id
+  //     if (deleteBtnClickedOn.className === 'todo-delete') {
+  //       deleteTodo(parseInt(deleteBtnClickedOn.parentNode.id))
+  //     }
+
+  //   });
+
+  var deleteBtns = document.getElementsByClassName("todo-delete")
+  console.log("delete btn count is: " + deleteBtns.length)
+  for(var i = 0; i<deleteBtns.length; i++){
+    console.log("in loop")
+    deleteBtns[i].addEventListener('click', deleteTodo, false);
   }
+  
+    // listItem.setAttribute("id", i)
+  
+  
   listItem.appendChild(checkbox)
   listItem.appendChild(todoTextInput)
-  listItem.appendChild(this.createDeleteBtn(deleteBtn))
-  list.appendChild(listItem);
+  listItem.appendChild(deleteBtn)
   listItem.setAttribute("class", classNames.TODO_ITEM);
+  // deleteBtn.addEventListener("click", deleteTodo());
+  list.appendChild(listItem);
 
-}
 
-function createDeleteBtn(deleteBtn) {
-
-  deleteBtn.innerHTML = "Delete";
-  return deleteBtn;
 }
 
 function checkTodo(checkbox) {
   return (checkbox.checked ? uncheckedCountSpan.innerHTML-- : uncheckedCountSpan.innerHTML++);
 }
 
-function deleteTodo(position) {
+function deleteTodo() {
 
-  // document.getElementById('deleteBtnCounter()').onclick = function () {
+  this.parentNode.parentNode.removeChild(this.parentNode);
     console.log('itemCountSpan.innerHTML is:' + itemCountSpan.innerHTML)
     return itemCountSpan.innerHTML--;
-  // }
-}
 
-// function deleteBtnCounter() {
-//   return (deleteBtn.onclick ? uncheckedCountSpan.innerHTML-- : uncheckedCountSpan.innerHTML)
-// }
+}
